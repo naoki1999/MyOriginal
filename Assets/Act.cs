@@ -20,11 +20,11 @@ public class PlayerControll : MonoBehaviour
 
     // 以下キャラクターコントローラ用パラメタ
     // 前進速度
-    public float forwardSpeed = 6.0f;
+    public float forwardSpeed = 7.0f;
     // 後退速度
     public float backwardSpeed = 5.0f;
     // 旋回速度
-    public float rotateSpeed = 0.3f;
+    public float rotateSpeed = 0.4f;
     //RigidBodyの取得
     private Rigidbody rb;
     // キャラクターコントローラ（カプセルコライダ）の移動量
@@ -35,6 +35,7 @@ public class PlayerControll : MonoBehaviour
     private GameObject scoreText;
     //得点
     private int score = 0;
+
     
     
     void Start()
@@ -99,9 +100,12 @@ public class PlayerControll : MonoBehaviour
         //ストーンに接触した際の処理
         if (other.gameObject.CompareTag("StonePrefabTag"))
         {
+           
+            //パーティクルを再生
+            GetComponent<ParticleSystem>().Play();
             //ストーンを破壊
             Destroy(other.gameObject);
-
+            
             //スコアを加算
             this.score += 10;
             //スコアを表示

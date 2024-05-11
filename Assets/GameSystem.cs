@@ -33,7 +33,7 @@ public class GameSystem : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 //SampleSceneを読み込む
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Title");
             }
         }
 
@@ -41,7 +41,7 @@ public class GameSystem : MonoBehaviour
     public void GameClear() 
     {
         //ゲームクリアの際、画面上にゲームクリアを表示
-        this.stateText.GetComponent<Text>().text = "Game Clear";
+        this.stateText.GetComponent<Text>().text = "Game Clear \n Push SpaceKey";
         this.isGameClear = true;
     }
 }
