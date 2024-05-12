@@ -33,8 +33,8 @@ public class PlayerControll : MonoBehaviour
     private Animator Anim;
     //スコアを表示
     private GameObject scoreText;
-    //得点
-    private int score = 0;
+    //残り個数
+    private int score = 10;
 
     
     
@@ -106,12 +106,12 @@ public class PlayerControll : MonoBehaviour
             //ストーンを破壊
             Destroy(other.gameObject);
             
-            //スコアを加算
-            this.score += 10;
+            //残り個数
+            this.score -= 1;
             //スコアを表示
-            this.scoreText.GetComponent<Text>().text = "Score" + this.score + "pt";
-            //スコアが100ptに達した場合
-            if (this.score >= 100)
+            this.scoreText.GetComponent<Text>().text = "ストーン残り" + this.score + "個";
+            //スコアが0に達した場合
+            if (this.score == 0)
             {
                 //GameSystemのGameClear関数を呼び出して画面上に表示
                 GameObject.Find("Canvas").GetComponent<GameSystem>().GameClear();
